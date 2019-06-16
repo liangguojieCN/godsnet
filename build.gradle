@@ -1,0 +1,53 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.godsnet'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	maven { url'http://maven.aliyun.com/nexus/content/groups/public' }
+	mavenCentral()
+}
+
+dependencies {
+
+	// SpringBoot base modules
+	compile 'org.springframework.boot:spring-boot-starter'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-test'
+
+	//freemarker
+	compile 'org.springframework.boot:spring-boot-starter-freemarker'
+	//log4j2
+	compile "org.springframework.boot:spring-boot-starter-log4j2"
+
+	//mysql JDBC
+	compile 'mysql:mysql-connector-java:8.0.13'
+
+	//Hibernate validation
+	compile "org.hibernate:hibernate-validator:5.3.1.Final"
+
+	//nutz
+	compile "org.nutz:nutz-plugins-spring-boot-starter:1.r.65"
+	//poi
+	compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+	compile "org.apache.poi:poi-ooxml:3.17"
+	// lombok
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+	//freemarker
+	compile "org.freemarker:freemarker:2.3.23"
+	//druid
+	compile "com.alibaba:druid-spring-boot-starter:1.1.10"
+
+}
+configurations {
+	all*.exclude module: 'spring-boot-starter-logging'
+	all*.exclude module: 'logback-classic'
+	all*.exclude module: 'log4j-over-slf4j'
+}
+
